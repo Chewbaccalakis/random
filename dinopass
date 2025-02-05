@@ -7,14 +7,26 @@
 STRONG_URL="https://www.dinopass.com/password/strong"
 SIMPLE_URL="https://www.dinopass.com/password/simple"
 
-if [ "$1" == "strong" ]; then
-    curl $STRONG_URL
+if [ "$1" == "" ]; then
+    echo "           __"
+    echo "          / _) -- I'm DinoPass and I can help you administer"
+    echo " _.----._/ /          your passwords in a dino-easy way!"
+    echo "/         /"
     echo ""
     echo ""
+    echo "Use 'dinopass simple' to generate a simple password"
+    echo "      lower case letters and number"
+    echo ""
+    echo "Use 'dinopass strong' to generate a strong password"
+    echo "      mixed upper and lowercase letters, a special character, plus numbers"
 elif [ "$1" == "simple" ]; then
     curl $SIMPLE_URL
     echo ""
     echo ""
+elif [ "$1" == "strong" ]; then
+    curl $STRONG_URL
+    echo ""
+    echo ""
 else
-    echo "Invalid command. Use 'strong' or 'simple'."
+    echo "Invalid command. Use 'simple' or 'strong'."
 fi
