@@ -20,10 +20,12 @@ if [ "$1" == "" ]; then
     echo "Use 'dinopass strong' to generate a strong password"
     echo "      mixed upper and lowercase letters, a special character, plus numbers"
 elif [ "$1" == "simple" ]; then
+    echo ""
     curl $SIMPLE_URL
     echo ""
     echo ""
 elif [ "$1" == "strong" ]; then
+    echo ""
     curl $STRONG_URL
     echo ""
     echo ""
