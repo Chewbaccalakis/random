@@ -1,5 +1,5 @@
 # random
-A repo for random small scripts/tools/things
+A repo for random small scripts/tools/things without any other place to live
 
 ### Dinopass
 ```
