@@ -1,13 +1,31 @@
-# Use the latest Debian slim image
 FROM debian:bullseye-slim
-
-# Set environment to non-interactive for apt
 ENV DEBIAN_FRONTEND=noninteractive
-
-# Install common tools
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     bash \
+    screen \
+    tree \
+    ncat \
+    git\
+    wget\
+    zip \
+    unzip \
+    tar \
+    xz-utils \
+    jq \
+    lsof \
+    strace \
+    man \
+    manpages \
+    python3-venv \
+    build-essential \
+    nmap \
+    tcpdump \
+    iproute2 \
+    netcat \
+    socat \
+    whois \
+    traceroute \
     curl \
     vim \
     nano \
@@ -15,15 +33,19 @@ RUN apt-get update && \
     iputils-ping \
     net-tools \
     procps \
-    ca-certificates && \
+    ca-certificates \
+    sudo \
+    python3 \
+    python3-pip \
+    nodejs \
+    npm && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-# Set the default shell
+RUN useradd -ms /bin/bash debian && \
+    usermod -aG sudo debian && \
+    echo 'debian ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo 'PS1="\u@sandbox:\w\$ "' >> /home/debian/.bashrc
 SHELL ["/bin/bash", "-c"]
-
-# Set working directory
-WORKDIR /root
-
-# Set the default command to an interactive shell
-CMD [ "bash" ]
+WORKDIR /home/debian
+USER debian
+CMD ["bash"]
