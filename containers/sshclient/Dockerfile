@@ -10,9 +10,9 @@ RUN apt-get update && \
     nano \
     iputils-ping \
     ca-certificates \
-    sudo \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    sudo
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
 RUN useradd -ms /bin/bash debian && \
     usermod -aG sudo debian && \
     echo 'debian ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
