@@ -10,13 +10,14 @@ RUN apt-get install -y --no-install-recommends \
     nano \
     iputils-ping \
     ca-certificates \
-    sudo
+    sudo \
+    openssh-client
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 RUN useradd -ms /bin/bash debian && \
     usermod -aG sudo debian && \
     echo 'debian ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-RUN echo 'PS1="\u@sum:\w\$ "' >> /home/debian/.bashrc
+RUN echo 'PS1="\u@sshclient:\w\$ "' >> /home/debian/.bashrc
 SHELL ["/bin/bash", "-c"]
 WORKDIR /home/debian
 USER debian
